@@ -1,34 +1,52 @@
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo, useEffect } from 'react';
+
+import { AiOutlineCaretLeft, AiOutlineCaretRight } from "react-icons/ai";
 
 import { CalendarContainer } from '../../styled/CalendarStyles';
 
+import useCalendarState from '../../state/calendar-state';
+
 const Calendar = memo(() => {
-  const [boxArray, setBoxArray] = useState(Array.from(Array(42), (_, index) => ({ id: index + 1 })))
-  const selectedYear = 2023;
-  const selectedMonth = 12;
-  const day = new Date(selectedYear, selectedMonth - 1, 1); // 시작일을 1일로 변경
-  const lastDate = new Date(selectedYear, selectedMonth, 0).getDate(); // 월의 마지막 날짜 계산
-  const dayOfWeek = day.getDay(); // 시작일의 요일
+  const { date, dateArray } = useCalendarState(state => state)
+  const { clickPrevArrow, clickNextArrow, initDate, calData } = useCalendarState(state => state)
 
   useEffect(() => {
-    const updatedBoxArray = [...boxArray];
-    for (let i = dayOfWeek, date = 1; date <= lastDate; i++, date++) {
-      updatedBoxArray[i].date = date;
-    }
-    setBoxArray(updatedBoxArray);
-  }, [selectedYear, selectedMonth]);
+    initDate()
+  }, [])
+
+  useEffect(() => {
+    calData()
+  }, [date]);
 
   return (
     <CalendarContainer>
-      <div className='selected_year_month'>
-        <span className='text_bold'>{selectedYear}</span>
+      {date && <div className='year_month_container'>
+        <div className='move_month_btn'>
+          <i
+            onClick={clickPrevArrow}
+            style={{ marginRight: "200px" }}
+          >
+            <AiOutlineCaretLeft />
+          </i>
+          <i onClick={clickNextArrow}>
+            <AiOutlineCaretRight />
+          </i>
+        </div>
+        <span className='text_bold'>{date.getFullYear()}</span>
         <span style={{ marginRight: "10px" }}>년</span>
-        <span className='text_bold'>{selectedMonth}</span>
+        <span className='text_bold'>{date.getMonth() + 1}</span>
         <span>월</span>
-      </div>
-      <ul className='date_container'>
+      </div>}
+      <ul className='week_date_container'>
+        <li className='week_box' style={{ color: "red" }}>일</li>
+        <li className='week_box'>월</li>
+        <li className='week_box'>화</li>
+        <li className='week_box'>수</li>
+        <li className='week_box'>목</li>
+        <li className='week_box'>금</li>
+        <li className='week_box'>토</li>
         {
-          boxArray.map((item, index) => {
+          dateArray.map((item, index) => {
             return (
               <li
                 className='date_box'
