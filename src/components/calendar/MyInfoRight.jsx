@@ -3,11 +3,11 @@ import { MyInfoRightContainer } from '../../styled/CalendarDateStyles';
 
 const MyInfoRight = memo(() => {
   const my_nutrientArray = [
-    { id: 1, image: "/images/icons/rice.png", text: "탄수화물", },
-    { id: 2, image: "/images/icons/meat.png", text: "단백질", },
-    { id: 3, image: "/images/icons/hamburger.png", text: "지방", },
-    { id: 4, image: "/images/icons/honey.png", text: "당", },
-    { id: 5, image: "/images/icons/salt.png", text: "나트륨", },
+    { id: 1, image: "images/icons/rice.png", text: "탄수화물", },
+    { id: 2, image: "images/icons/meat.png", text: "단백질", },
+    { id: 3, image: "images/icons/hamburger.png", text: "지방", },
+    { id: 4, image: "images/icons/honey.png", text: "당", },
+    { id: 5, image: "images/icons/salt.png", text: "나트륨", },
   ]
 
   return (

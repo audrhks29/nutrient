@@ -9,8 +9,8 @@ const MyInfoLeft = memo(() => {
   ]
 
   const today_KcalArray = [
-    { id: 1, text: "섭취칼로리", image: "/images/icons/eat.png", unit: "kcal" },
-    { id: 2, text: "소모칼로리", image: "/images/icons/run.png", unit: "kcal" }
+    { id: 1, text: "섭취칼로리", image: "images/icons/eat.png", unit: "kcal" },
+    { id: 2, text: "소모칼로리", image: "images/icons/run.png", unit: "kcal" }
   ]
 
   return (
