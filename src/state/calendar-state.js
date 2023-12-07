@@ -20,22 +20,27 @@ const useCalendarState = create((set, getState) => ({
     const firstDayOfWeek = new Date(date.getFullYear(), date.getMonth(), 1).getDay();
     const lastDayOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
 
+    // 날짜 재설정
     const updatedBoxArray = [...dateArray].map((item) => {
-      return { ...item, date: undefined }; // 날짜 재설정
+      return {
+        ...item,
+        year: undefined,
+        month: undefined,
+        day: undefined
+      };
     });
 
     let dayCounter = 1;
 
     for (let i = firstDayOfWeek; i < dateArray.length; i++) {
       if (dayCounter <= lastDayOfMonth) {
-        updatedBoxArray[i].date = dayCounter;
+        updatedBoxArray[i].year = date.getFullYear();
+        updatedBoxArray[i].month = date.getMonth();
+        updatedBoxArray[i].day = dayCounter;
         dayCounter++;
       }
     }
     set({ dateArray: updatedBoxArray, });
-    console.log(date);
-    console.log(firstDayOfWeek);
-    console.log(lastDayOfMonth);
   },
 
   clickPrevArrow: () => {

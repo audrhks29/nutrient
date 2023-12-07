@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "breakfast",
+    "image": "/images/icons/breakfast.png",
+    "unit": "kcal",
+    "text": "아침식사"
+  },
+  {
+    "id": 2,
+    "name": "lunch",
+    "image": "/images/icons/lunch.png",
+    "unit": "kcal",
+    "text": "점심식사"
+  },
+  {
+    "id": 3,
+    "name": "dinner",
+    "image": "/images/icons/dinner.png",
+    "unit": "kcal",
+    "text": "저녁식사"
+  },
+  {
+    "id": 4,
+    "name": "etc",
+    "image": "/images/icons/dinner.png",
+    "unit": "kcal",
+    "text": "기타식사"
+  },
+  {
+    "id": 5,
+    "name": "muscle",
+    "image": "/images/icons/muscle.png",
+    "unit": "kcal",
+    "text": "운동"
+  },
+  {
+    "id": 6,
+    "name": "water",
+    "image": "/images/icons/water.png",
+    "unit": "ml",
+    "text": "수분섭취"
+  }
+]

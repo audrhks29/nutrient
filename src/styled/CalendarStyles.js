@@ -30,6 +30,7 @@ export const CalendarContainer = styled.div`
       text-align:center;
       height: 30px;
       line-height:30px;
+      font-weight:600;
     }
     .date_box{
       height: 120px;
