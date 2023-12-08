@@ -1,15 +1,20 @@
 import React, { memo, useEffect, useState } from 'react';
 
-const Meal = memo(({ id, name, image, unit, text, findMealData }) => {
+import useEditState from '../../state/edit-state';
+
+const Meal = memo(({ name, image, unit, text }) => {
   const [kcalSum, setKcalSum] = useState(0);
   const [filteredData, setFilteredData] = useState([]);
+  const { mealData } = useEditState(state => state);
 
   useEffect(() => {
-    setFilteredData([])
-    if (findMealData) {
-      setFilteredData(findMealData.filter(item => item.kindOfMeal === name))
+    if (mealData) {
+      setFilteredData(mealData.filter(item => item.kindOfMeal === name))
     }
-  }, [findMealData])
+    else {
+      setFilteredData([])
+    }
+  }, [mealData])
 
   useEffect(() => {
     calSum()

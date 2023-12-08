@@ -1,6 +1,19 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect, useState } from 'react';
+
+import useEditState from '../../state/edit-state';
+import useUserState from './../../state/user-state';
+
+import { MyInfoLeftContainer } from './../../styled/CalendarDateStyles';
 
 const MyInfoLeft = memo(() => {
+  const [kcalSum, setKcalSum] = useState(0);
+  const { mealData, healthData } = useEditState(state => state);
+  const { userData } = useUserState(state => state);
+  console.log(userData);
+
+  useEffect(() => {
+    calSum()
+  }, [mealData])
 
   const in_bodyArray = [
     { id: 1, text: "몸무게", unit: "kg" },
@@ -13,8 +26,22 @@ const MyInfoLeft = memo(() => {
     { id: 2, text: "소모칼로리", image: "images/icons/run.png", unit: "kcal" }
   ]
 
+  const userDataMap = {
+    1: userData.weight,
+    2: userData.skeletalMuscle,
+    3: userData.bodyFat,
+  };
+
+  const calSum = () => {
+    const sum = mealData.reduce((acc, cur) => {
+      return acc + cur.kcal;
+    }, 0)
+
+    setKcalSum(sum)
+  }
+
   return (
-    <div className='my_info_left'>
+    <MyInfoLeftContainer>
       <ul className='in_body'>
         {
           in_bodyArray.map(item => {
@@ -22,7 +49,7 @@ const MyInfoLeft = memo(() => {
             return (
               <li key={id}>
                 <span>{text}</span>
-                <div><input type="text" />{unit}</div>
+                <p>{userDataMap[id]}{unit}</p>
               </li>
             )
           })
@@ -36,13 +63,17 @@ const MyInfoLeft = memo(() => {
               <li key={id}>
                 <span>{text}</span>
                 <img src={image} alt="" />
-                <span>0 {unit}</span>
+                <span>
+                  {id == 1 && kcalSum}
+                  {id == 2 && healthData}
+                  {unit}
+                </span>
               </li>
             )
           })
         }
       </ul>
-    </div>
+    </MyInfoLeftContainer>
   );
 });
 

@@ -1,9 +1,12 @@
 import styled from 'styled-components'
+import { listStyle } from './CommonStyles'
 
 export const CalendarContainer = styled.div`
-  width: 840px;
+  width: 900px;
   margin: auto;
   .year_month_container{
+    ${listStyle}
+    margin-top:0px;
     text-align: center;
     font-size:24px;
     padding: 30px;
@@ -21,11 +24,10 @@ export const CalendarContainer = styled.div`
     }
   }
   .week_date_container{
+    ${listStyle}
     display: flex;
     flex-direction:row;
     flex-wrap:wrap;
-    outline: 1px solid #000;
-    padding:0px;
     .week_box{
       text-align:center;
       height: 30px;
@@ -47,16 +49,20 @@ export const CalendarContainer = styled.div`
       border-right:none;
       width: 120px;
     }
+    .week_box:nth-child(7n),
+    .date_box:nth-child(7n)
+    {
+      border-right:1px solid black;
+    }
     .week_box:nth-child(7n+1),
     .date_box:nth-child(7n+1){
-      border-left:none;
+      border-left:1px solid black;
     }
-    .week_box:nth-child(-n+7),
-    .date_box:nth-child(-n+7){
-      border-top:none;
+    .week_box:nth-child(-n+7){
+      border-top:1px solid black;
     }
     .date_box:nth-child(n+43){
-      border-bottom:none;
+      border-bottom:1px solid black;
     }
   }
   .text_bold{ font-weight:bold }
