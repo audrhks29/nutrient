@@ -9,7 +9,6 @@ const MyInfoLeft = memo(() => {
   const [kcalSum, setKcalSum] = useState(0);
   const { mealData, healthData } = useEditState(state => state);
   const { userData } = useUserState(state => state);
-  console.log(userData);
 
   useEffect(() => {
     calSum()

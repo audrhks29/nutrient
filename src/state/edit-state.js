@@ -22,6 +22,8 @@ const useEditState = create((set, getState) => ({
 
   selectedDate: null,
 
+  popupState: false,
+
   initToday: (today) => {
     set({ selectedDate: today })
   },
@@ -44,6 +46,11 @@ const useEditState = create((set, getState) => ({
         waterData: []
       })
     }
+  },
+
+  isPopupOpen: () => {
+    const popupState = getState().popupState;
+    set({ popupState: !popupState })
   }
 }))
 

@@ -34,10 +34,6 @@ const Meal = memo(({ name, image, unit, text }) => {
         <img src={image} alt="" />
         <span>{text}</span>
       </div>
-      <div>
-        <input type="text" />
-        <button>검색</button>
-      </div>
       {
         filteredData && <div>
           <ul>

@@ -102,8 +102,9 @@ export const MyInfoLeftContainer = styled.div`
       flex-direction: column;
       text-align: center;
       img{
-        width: 100px;
-        height: 100px;
+        width: 80px;
+        height: 80px;
+        margin:10px 0;
       }
     }
   }

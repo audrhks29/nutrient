@@ -9,12 +9,15 @@ import Meal from '../../components/calendar/Meal';
 import Etc from '../../components/calendar/Etc';
 
 import useEditState from '../../state/edit-state';
+import BtnEdit from '../../components/calendar/BtnEdit';
+import EditPopup from '../../components/calendar/EditPopup';
 
 const Edit = memo(() => {
   const { year, month, day } = useParams();
-  const { initToday, settingData } = useEditState(state => state);
+  const { initToday, settingData, popupState, isPopupOpen } = useEditState(state => state);
 
   const today = `${year}/${month}/${day}`
+
   useEffect(() => {
     initToday(today)
     settingData()
@@ -38,8 +41,10 @@ const Edit = memo(() => {
             }
           })
         }
+        <BtnEdit runFunc={isPopupOpen} />
       </ul>
       <Etc />
+      {popupState && <EditPopup />}
     </EditContainer>
   );
 });
