@@ -1,21 +1,12 @@
 import React, { memo, useEffect, useState } from 'react';
 
-import { useNavigate, useParams } from 'react-router-dom';
-
 import useEditState from '../../state/edit-state';
 
 const TodayKcalRecord = memo(({ id, name, image, unit, text }) => {
-  const { healthData, waterData } = useEditState(state => state)
-  const { year, month, day } = useParams();
-  const navigate = useNavigate()
+  const { healthData, waterData, isPopupOpen, selectedData } = useEditState(state => state)
   const [kcalSum, setKcalSum] = useState(0);
   const [filteredData, setFilteredData] = useState([]);
   const { mealData } = useEditState(state => state);
-
-  const goToEdit = () => {
-    navigate(`/calendar/${year}/${month}/${day}/edit`)
-  }
-
   useEffect(() => {
     if (mealData) {
       setFilteredData(mealData.filter(item => item.kindOfMeal === name))
@@ -40,7 +31,7 @@ const TodayKcalRecord = memo(({ id, name, image, unit, text }) => {
   return (
     <li
       key={id}
-      onClick={goToEdit}
+      onClick={() => isPopupOpen(text, filteredData)}
     >
       <img src={image} alt="" />
       <span>{text}</span>

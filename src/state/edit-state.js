@@ -23,7 +23,11 @@ const useEditState = create((set, getState) => ({
   selectedDate: null,
 
   popupState: false,
-
+  selectedData: {
+    title: null,
+    meals: []
+  }
+  ,
   initToday: (today) => {
     set({ selectedDate: today })
   },
@@ -48,9 +52,26 @@ const useEditState = create((set, getState) => ({
     }
   },
 
-  isPopupOpen: () => {
+  isPopupOpen: (text, filteredData) => {
+    const popupState = getState().popupState;
+    const selectedData = getState().selectedData;
+    set({
+      popupState: !popupState,
+      selectedData: {
+        ...selectedData,
+        title: text,
+        meals: filteredData
+      },
+    })
+  },
+
+  isPopupClose: () => {
     const popupState = getState().popupState;
     set({ popupState: !popupState })
+  },
+
+  addMealsData: () => {
+
   }
 }))
 

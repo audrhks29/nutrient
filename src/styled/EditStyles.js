@@ -54,7 +54,7 @@ export const BtnEditContainer = styled.div`
 `
 
 export const EditPopupContainer = styled.div`
-${listStyle};
+  ${listStyle};
   margin-top:0px;
   position:fixed;
   top:50%;
@@ -63,15 +63,17 @@ ${listStyle};
   width:1200px;
   height:800px;
   transform:translate(-50%,-50%);
-  /* border: 1px solid #000; */
   display:flex;
   justify-content:space-around;
+  .closeBox{
+    cursor: pointer;
+  }
 `
 
 export const MyMealsContainer = styled.div`
-${listStyle};
-margin-top:0px;
-width:300px;
+  ${listStyle};
+  margin-top:0px;
+  width:300px;
 `
 
 export const SearchMealsContainer = styled.div`

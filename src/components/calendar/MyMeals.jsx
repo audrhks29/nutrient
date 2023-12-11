@@ -1,18 +1,28 @@
 import React, { memo } from 'react';
 import { MyMealsContainer } from '../../styled/EditStyles';
+import useEditState from '../../state/edit-state';
 
 const MyMeals = memo(() => {
+  const { selectedData } = useEditState(state => state);
+  console.log(selectedData);
+
   return (
     <MyMealsContainer>
-      <form action="">
-        <label htmlFor="cars">식사 선택:</label>
-        <select id="meals" name="meals">
-          <option value="breakfast">아침식사</option>
-          <option value="lunch">점심식사</option>
-          <option value="dinner">저녁식사</option>
-          <option value="etcMeal">기타식사</option>
-        </select>
-      </form>
+      {selectedData.title}
+      <ul>
+        {
+          selectedData.meals.map(item => {
+            return (
+              <li key={item.id}>
+                <span>{item.name}</span>
+                <span>{item.kcal}kcal</span>
+                <span>{item.ea}EA</span>
+              </li>
+            )
+          })
+        }
+      </ul>
+
     </MyMealsContainer>
   );
 });
