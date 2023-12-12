@@ -10,10 +10,6 @@ const MyInfoLeft = memo(() => {
   const { mealData, healthData } = useEditState(state => state);
   const { userData } = useUserState(state => state);
 
-  useEffect(() => {
-    calSum()
-  }, [mealData])
-
   const in_bodyArray = [
     { id: 1, text: "몸무게", unit: "kg" },
     { id: 2, text: "골격근", unit: "kg" },
@@ -31,13 +27,16 @@ const MyInfoLeft = memo(() => {
     3: userData.bodyFat,
   };
 
-  const calSum = () => {
-    const sum = mealData.reduce((acc, cur) => {
-      return acc + cur.kcal;
-    }, 0)
-
-    setKcalSum(sum)
-  }
+  useEffect(() => {
+    if (mealData) {
+      const totalKcal
+        = mealData.map(meal => meal.kcalSum)
+          .reduce((acc, kcalSum) => acc + kcalSum, 0);
+      setKcalSum(totalKcal);
+    } else {
+      setKcalSum(0);
+    }
+  }, [mealData]);
 
   return (
     <MyInfoLeftContainer>

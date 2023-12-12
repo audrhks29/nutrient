@@ -11,6 +11,7 @@ import useEditState from '../../state/edit-state';
 
 import menu from '../../assets/menu_calendarMeal.json'
 import EditPopup from './../../components/calendar/EditPopup';
+import Background from '../../components/Background';
 
 const CalendarDate = memo(() => {
   const { year, month, day } = useParams();
@@ -57,6 +58,7 @@ const CalendarDate = memo(() => {
         </ul>
       </CalendarDateContainer>
       {popupState && <EditPopup />}
+      {popupState && <Background />}
     </>
   );
 });

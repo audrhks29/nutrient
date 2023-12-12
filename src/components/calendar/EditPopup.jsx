@@ -1,23 +1,32 @@
-import React, { memo, useEffect } from 'react';
+import React, { memo } from 'react';
 import { EditPopupContainer } from '../../styled/EditStyles';
 import SearchMeals from './SearchMeals';
 import MyMeals from './MyMeals';
-import { AiOutlineClose } from "react-icons/ai";
+
 import useEditState from '../../state/edit-state';
+import Background from '../Background';
+import useMealDataState from '../../state/mealData-state';
+import SearchMealPopup from './SearchMealPopup';
+import BtnClose from './../common/BtnClose';
 const EditPopup = memo(() => {
   const { isPopupClose } = useEditState(state => state);
-
+  const { searchedMealPopupState } = useMealDataState(state => state);
   return (
-    <EditPopupContainer>
-      <MyMeals />
-      <SearchMeals />
-      <div
-        className="closeBox"
-        onClick={isPopupClose}
-      >
-        <i><AiOutlineClose /></i>
-      </div>
-    </EditPopupContainer>
+    <>
+      <EditPopupContainer>
+        <div className='editPopup_inner'>
+          <MyMeals />
+          <SearchMeals />
+          <BtnClose
+            func={isPopupClose}
+            top={20}
+            right={20}
+          />
+        </div>
+        {searchedMealPopupState && <Background borderRadius={30} />}
+        {searchedMealPopupState && <SearchMealPopup />}
+      </EditPopupContainer>
+    </>
   );
 });
 

@@ -3,6 +3,11 @@ import axios from 'axios';
 const useMealDataState = create((set, getState) => ({
   testData: [],
   searchKeywords: "",
+
+  searchedMealPopupState: false,
+
+  selectedSearchData: [],
+  editMode: false,
   fetchData: async () => {
     const apiUrl = 'https://apis.data.go.kr/1471000/FoodNtrIrdntInfoService1/getFoodNtrItdntList1';
     const apiKey = '4ad7fZ%2BQEQsdtGvuaJKULjtO3IqlBvrSybctznGyRbfutwxzdsNZ16gEpXGScj18%2BrCgy4aiIIub44OW%2F45hlA%3D%3D';
@@ -14,11 +19,48 @@ const useMealDataState = create((set, getState) => ({
     } catch (error) {
       console.error('Error fetching data:', error);
     }
-
   },
+
   changeSearchKeyword: (e) => {
     const value = e
     set({ searchKeywords: value });
+  },
+
+  isSearchedMealPopupToggle: (item) => {
+    const searchedMealPopupState = getState().searchedMealPopupState;
+    if (!searchedMealPopupState) {
+      set({
+        searchedMealPopupState: true,
+        selectedSearchData: item
+      })
+    }
+    else {
+      set({
+        searchedMealPopupState: false,
+        selectedSearchData: [],
+        editMode: false
+      })
+    }
+  },
+
+  editModeToggle: () => {
+    const editMode = getState().editMode;
+    set({ editMode: !editMode })
+  },
+
+  attachSelectedSearchData: (editedNutInfoArray) => {
+    const selectedSearchData = getState().selectedSearchData;
+    set({
+      selectedSearchData: {
+        ...selectedSearchData,
+        NUTR_CONT1: editedNutInfoArray[0].amount,
+        NUTR_CONT2: editedNutInfoArray[1].amount,
+        NUTR_CONT3: editedNutInfoArray[2].amount,
+        NUTR_CONT4: editedNutInfoArray[3].amount,
+        NUTR_CONT5: editedNutInfoArray[4].amount,
+      },
+      editMode: false
+    });
   }
 }));
 

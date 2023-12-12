@@ -5,9 +5,8 @@ import useMealDataState from '../../state/mealData-state';
 import { SearchMealsContainer } from '../../styled/EditStyles';
 
 const SearchMeals = memo(() => {
-  const { testData, searchKeywords } = useMealDataState(state => state);
-  const { fetchData, changeSearchKeyword } = useMealDataState(state => state);
-
+  const { testData, searchKeywords, selectedSearchData } = useMealDataState(state => state);
+  const { fetchData, changeSearchKeyword, isSearchedMealPopupToggle } = useMealDataState(state => state);
   return (
     <SearchMealsContainer>
       <input
@@ -27,6 +26,7 @@ const SearchMeals = memo(() => {
           <col width={100} />
           <col width={100} />
           <col width={200} />
+          <col width={100} />
         </colgroup>
         <thead>
           <tr>
@@ -34,6 +34,7 @@ const SearchMeals = memo(() => {
             <th>1회 제공량</th>
             <th>열량</th>
             <th>가공업체</th>
+            <th>기타</th>
             {/* <th>탄수화물</th>
             <th>단백질</th>
             <th>지방</th>
@@ -46,11 +47,20 @@ const SearchMeals = memo(() => {
             testData && testData.body && testData.body.items &&
             testData.body.items.map((item, index) => {
               return (
-                <tr key={index}>
+                <tr
+                  key={index}
+                >
                   <td>{item.DESC_KOR}</td>
                   <td>{item.SERVING_WT}g</td>
                   <td>{item.NUTR_CONT1}kcal</td>
                   <td>{item.ANIMAL_PLANT}</td>
+                  <td>
+                    <button
+                      onClick={() => isSearchedMealPopupToggle(item)}
+                    >
+                      추가
+                    </button>
+                  </td>
                   {/* <td>{item.NUTR_CONT2}g</td>
                 <td>{item.NUTR_CONT3}g</td>
                 <td>{item.NUTR_CONT4}g</td>
