@@ -8,6 +8,7 @@ import Background from '../Background';
 import useMealDataState from '../../state/mealData-state';
 import SearchMealPopup from './SearchMealPopup';
 import BtnClose from './../common/BtnClose';
+
 const EditPopup = memo(() => {
   const { isPopupClose } = useEditState(state => state);
   const { searchedMealPopupState } = useMealDataState(state => state);

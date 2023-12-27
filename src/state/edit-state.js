@@ -7,50 +7,79 @@ const useEditState = create((set, getState) => ({
       date: "2023/12/11",
       meal: [
         {
+          id: 1, kind: "breakfast", kor_kind: "아침식사", kcalSum: 55,
+          data: [
+            { id: 1, DESC_KOR: "고구마", SERVING_WT: 203, ANIMAL_PLANT: "", BGN_YEAR: "", NUTR_CONT1: 300, NUTR_CONT2: 300, NUTR_CONT3: 300, NUTR_CONT4: 300, NUTR_CONT5: 300, NUTR_CONT6: 300, NUTR_CONT7: 300, NUTR_CONT8: 300, NUTR_CONT9: 300 },
+            { id: 2, DESC_KOR: "고구마", SERVING_WT: 203, ANIMAL_PLANT: "", BGN_YEAR: "", NUTR_CONT1: 300, NUTR_CONT2: 300, NUTR_CONT3: 300, NUTR_CONT4: 300, NUTR_CONT5: 300, NUTR_CONT6: 300, NUTR_CONT7: 300, NUTR_CONT8: 300, NUTR_CONT9: 300 },
+          ]
+        },
+        {
+          id: 2, kind: "lunch", kor_kind: "점심식사", kcalSum: 60,
+          data: [
+            { id: 1, DESC_KOR: "고구마", SERVING_WT: 203, ANIMAL_PLANT: "", BGN_YEAR: "", NUTR_CONT1: 300, NUTR_CONT2: 300, NUTR_CONT3: 300, NUTR_CONT4: 300, NUTR_CONT5: 300, NUTR_CONT6: 300, NUTR_CONT7: 300, NUTR_CONT8: 300, NUTR_CONT9: 300 },
+            { id: 2, DESC_KOR: "고구마", SERVING_WT: 203, ANIMAL_PLANT: "", BGN_YEAR: "", NUTR_CONT1: 300, NUTR_CONT2: 300, NUTR_CONT3: 300, NUTR_CONT4: 300, NUTR_CONT5: 300, NUTR_CONT6: 300, NUTR_CONT7: 300, NUTR_CONT8: 300, NUTR_CONT9: 300 },
+          ]
+        },
+        {
+          id: 3, kind: "dinner", kor_kind: "저녁식사", kcalSum: 300,
+          data: [
+            { id: 1, DESC_KOR: "고구마", SERVING_WT: 203, ANIMAL_PLANT: "", BGN_YEAR: "", NUTR_CONT1: 300, NUTR_CONT2: 300, NUTR_CONT3: 300, NUTR_CONT4: 300, NUTR_CONT5: 300, NUTR_CONT6: 300, NUTR_CONT7: 300, NUTR_CONT8: 300, NUTR_CONT9: 300 },
+            { id: 2, DESC_KOR: "저녁", SERVING_WT: 203, ANIMAL_PLANT: "", BGN_YEAR: "", NUTR_CONT1: 300, NUTR_CONT2: 300, NUTR_CONT3: 300, NUTR_CONT4: 300, NUTR_CONT5: 300, NUTR_CONT6: 300, NUTR_CONT7: 300, NUTR_CONT8: 300, NUTR_CONT9: 300 },
+          ]
+        },
+        {
+          id: 4, kind: "etc", kor_kind: "기타식사", kcalSum: 300,
+          data: [
+            { id: 1, DESC_KOR: "고구마", SERVING_WT: 203, ANIMAL_PLANT: "", BGN_YEAR: "", NUTR_CONT1: 300, NUTR_CONT2: 300, NUTR_CONT3: 300, NUTR_CONT4: 300, NUTR_CONT5: 300, NUTR_CONT6: 300, NUTR_CONT7: 300, NUTR_CONT8: 300, NUTR_CONT9: 300 },
+            { id: 2, DESC_KOR: "고구마", SERVING_WT: 203, ANIMAL_PLANT: "", BGN_YEAR: "", NUTR_CONT1: 300, NUTR_CONT2: 300, NUTR_CONT3: 300, NUTR_CONT4: 300, NUTR_CONT5: 300, NUTR_CONT6: 300, NUTR_CONT7: 300, NUTR_CONT8: 300, NUTR_CONT9: 300 },
+          ]
+        },
+      ],
+      health: 203,
+      water: 300,
+    },
+    {
+      id: 2,
+      date: "2023/12/13",
+      meal: [
+        {
           id: 1, kind: "breakfast", kcalSum: 55,
           data: [
-            { id: 1, name: "고구마", kcal: 203, ea: 1 },
-            { id: 2, name: "딸기", kcal: 100, ea: 1 },
+            { id: 1, DESC_KOR: "고구마", SERVING_WT: 203, ANIMAL_PLANT: "", BGN_YEAR: "", NUTR_CONT1: 300, NUTR_CONT2: 300, NUTR_CONT3: 300, NUTR_CONT4: 300, NUTR_CONT5: 300, NUTR_CONT6: 300, NUTR_CONT7: 300, NUTR_CONT8: 300, NUTR_CONT9: 300 },
+            { id: 2, DESC_KOR: "고구마", SERVING_WT: 203, ANIMAL_PLANT: "", BGN_YEAR: "", NUTR_CONT1: 300, NUTR_CONT2: 300, NUTR_CONT3: 300, NUTR_CONT4: 300, NUTR_CONT5: 300, NUTR_CONT6: 300, NUTR_CONT7: 300, NUTR_CONT8: 300, NUTR_CONT9: 300 },
           ]
         },
         {
           id: 2, kind: "lunch", kcalSum: 60,
           data: [
-            { id: 1, name: "밥", kcal: 300, ea: 1 },
-            { id: 2, name: "김치찌개", kcal: 500, ea: 1 }
+            { id: 1, DESC_KOR: "고구마", SERVING_WT: 203, ANIMAL_PLANT: "", BGN_YEAR: "", NUTR_CONT1: 300, NUTR_CONT2: 300, NUTR_CONT3: 300, NUTR_CONT4: 300, NUTR_CONT5: 300, NUTR_CONT6: 300, NUTR_CONT7: 300, NUTR_CONT8: 300, NUTR_CONT9: 300 },
+            { id: 2, DESC_KOR: "고구마", SERVING_WT: 203, ANIMAL_PLANT: "", BGN_YEAR: "", NUTR_CONT1: 300, NUTR_CONT2: 300, NUTR_CONT3: 300, NUTR_CONT4: 300, NUTR_CONT5: 300, NUTR_CONT6: 300, NUTR_CONT7: 300, NUTR_CONT8: 300, NUTR_CONT9: 300 },
           ]
         },
         {
           id: 3, kind: "dinner", kcalSum: 300,
           data: [
-            { id: 1, name: "d", kcal: 245, ea: 1 },
-            { id: 2, name: "w", kcal: 965, ea: 1 }
+            { id: 1, DESC_KOR: "고구마", SERVING_WT: 203, ANIMAL_PLANT: "", BGN_YEAR: "", NUTR_CONT1: 300, NUTR_CONT2: 300, NUTR_CONT3: 300, NUTR_CONT4: 300, NUTR_CONT5: 300, NUTR_CONT6: 300, NUTR_CONT7: 300, NUTR_CONT8: 300, NUTR_CONT9: 300 },
+            { id: 2, DESC_KOR: "저녁구마", SERVING_WT: 203, ANIMAL_PLANT: "", BGN_YEAR: "", NUTR_CONT1: 300, NUTR_CONT2: 300, NUTR_CONT3: 300, NUTR_CONT4: 300, NUTR_CONT5: 300, NUTR_CONT6: 300, NUTR_CONT7: 300, NUTR_CONT8: 300, NUTR_CONT9: 300 },
           ]
         },
         {
           id: 4, kind: "etc", kcalSum: 300,
           data: [
-            { id: 1, name: "a", kcal: 276, ea: 1 },
-            { id: 2, name: "f", kcal: 845, ea: 1 }
+            { id: 1, DESC_KOR: "고구마", SERVING_WT: 203, ANIMAL_PLANT: "", BGN_YEAR: "", NUTR_CONT1: 300, NUTR_CONT2: 300, NUTR_CONT3: 300, NUTR_CONT4: 300, NUTR_CONT5: 300, NUTR_CONT6: 300, NUTR_CONT7: 300, NUTR_CONT8: 300, NUTR_CONT9: 300 },
+            { id: 2, DESC_KOR: "고구마", SERVING_WT: 203, ANIMAL_PLANT: "", BGN_YEAR: "", NUTR_CONT1: 300, NUTR_CONT2: 300, NUTR_CONT3: 300, NUTR_CONT4: 300, NUTR_CONT5: 300, NUTR_CONT6: 300, NUTR_CONT7: 300, NUTR_CONT8: 300, NUTR_CONT9: 300 },
           ]
         },
       ],
-      // health: 203,
+      health: 203,
       water: 300,
     }
   ],
-  mealData: [],
-  healthData: 0,
-  waterData: 0,
-
   selectedDate: null,
 
   popupState: false,
-  selectedData: {
-    title: null,
-    meals: [],
-  },
 
+  selectedData: null, // selectedDate와 kind에 맞는 데이터
   initToday: (today) => {
     set({ selectedDate: today })
   },
@@ -58,45 +87,85 @@ const useEditState = create((set, getState) => ({
   settingData: () => {
     const data = getState().data;
     const selectedDate = getState().selectedDate;
-    const findData = data.find(item => item.date === selectedDate)
-    if (findData) {
-      set({
-        mealData: findData.meal,
-        healthData: findData.health ? findData.health : 0,
-        waterData: findData.water ? findData.water : 0
-      })
-    }
-    else {
-      set({
-        mealData: []
-      })
+    const selectedData = getState().selectedData;
+    const findData = data.find(item => item.date === selectedDate);
+    if (findData && selectedData) {
+      const findPopupData = findData.meal.find(item => item.kind === selectedData.kind);
+      set({ selectedData: findPopupData })
     }
   },
 
-  isPopupOpen: (name, text, filteredData) => {
-    const selectedData = getState().selectedData;
+  isPopupOpen: (name) => {
+    const data = getState().data;
+    const selectedDate = getState().selectedDate;
+    set({ popupState: true })
+    const findData = data.find(item => item.date === selectedDate);
+    const findPopupData = findData.meal.find(item => item.kind === name);
+    if (findPopupData) {
+      set({ selectedData: findPopupData })
+    }
+  },
+
+  isPopupClose: () => {
     set({
-      popupState: true,
-      selectedData: {
-        ...selectedData,
-        name: name,
-        title: text,
-        meals: filteredData
-      },
+      popupState: false,
+      selectedData: null
     })
   },
 
-  isPopupClose: () => { set({ popupState: false }) },
-
-  addMealsData: (selectedSearchData) => {
-    const selectedDate = getState().selectedDate;
+  insertData: (editedNutInfoArray, selectedSearchData) => {
     const selectedData = getState().selectedData;
     const data = getState().data;
-    const aa = data.find(item => item.date === selectedDate)
-    const bb = aa.meal.find(item => item.kind === selectedData.name)
+    const selectedDate = getState().selectedDate;
+    const dataIdx = data.findIndex(item => item.date === selectedDate);
+    const mealIdx = data[dataIdx].meal.findIndex(item => item.kind === selectedData.kind);
+    if (selectedSearchData && editedNutInfoArray) {
+      set((state) => {
+        const newDataArray = state.data.map((dataItem, dataIndex) => {
+          if (dataIndex === dataIdx) {
+            return {
+              ...dataItem,
+              meal: dataItem.meal.map((mealItem, mealIndex) => {
+                if (mealIndex === mealIdx) {
+                  return {
+                    ...mealItem,
+                    data: [
+                      ...mealItem.data,
+                      {
+                        id: mealItem.data.length + 1,
+                        DESC_KOR: selectedSearchData.DESC_KOR,
+                        NUTR_CONT1: editedNutInfoArray[0].amount,
+                        SERVING_WT: editedNutInfoArray[1].amount,
+                        NUTR_CONT2: editedNutInfoArray[2].amount,
+                        NUTR_CONT3: editedNutInfoArray[3].amount,
+                        NUTR_CONT4: editedNutInfoArray[4].amount,
+                        NUTR_CONT5: editedNutInfoArray[5].amount,
+                        NUTR_CONT6: editedNutInfoArray[6].amount,
+                      },
+                    ],
+                  };
+                }
+                return mealItem;
+              }),
+            };
+          }
+          return dataItem;
+        });
+
+        return {
+          ...state,
+          data: newDataArray,
+        };
+      });
+    }
+    // const PopupData = getState().PopupData
+    // console.log(selectedData.kind);
+    // const findData = PopupData.meal.find(item => item.kind === selectedData.kind);
+
+    // if (findData) {
+    //   set({ selectedData: findData })
+    // }
   },
-
-
 }))
 
 export default useEditState

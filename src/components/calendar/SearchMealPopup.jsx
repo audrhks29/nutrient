@@ -8,18 +8,18 @@ import useEditState from '../../state/edit-state';
 const SearchMealPopup = memo(() => {
   const { selectedSearchData, editMode } = useMealDataState(state => state);
   const { isSearchedMealPopupToggle, editModeToggle, attachSelectedSearchData } = useMealDataState(state => state);
-  const { addMealsData } = useEditState(state => state);
+  const { insertData, selectedData } = useEditState(state => state);
 
   const nutInfoArray = [
-    { id: 1, title: "탄수화물", unit: "g", amount: selectedSearchData.NUTR_CONT1 },
-    { id: 2, title: "단백질", unit: "g", amount: selectedSearchData.NUTR_CONT2 },
-    { id: 3, title: "지방", unit: "g", amount: selectedSearchData.NUTR_CONT3 },
-    { id: 4, title: "당", unit: "g", amount: selectedSearchData.NUTR_CONT4 },
-    { id: 5, title: "나트륨", unit: "mg", amount: selectedSearchData.NUTR_CONT5 },
+    { id: 1, title: "열량", unit: "kcal", amount: selectedSearchData.NUTR_CONT1 },
+    { id: 2, title: "1회제공량", unit: "g", amount: selectedSearchData.SERVING_WT },
+    { id: 3, title: "탄수화물", unit: "g", amount: selectedSearchData.NUTR_CONT2 },
+    { id: 4, title: "단백질", unit: "g", amount: selectedSearchData.NUTR_CONT3 },
+    { id: 5, title: "지방", unit: "g", amount: selectedSearchData.NUTR_CONT4 },
+    { id: 6, title: "당", unit: "g", amount: selectedSearchData.NUTR_CONT5 },
+    { id: 7, title: "나트륨", unit: "mg", amount: selectedSearchData.NUTR_CONT6 }
   ];
-
   const [editedNutInfoArray, setEditedNutInfoArray] = useState(nutInfoArray);
-
   const handleInputChange = (index, value) => {
     setEditedNutInfoArray(prevArray => {
       const newArray = [...prevArray];
@@ -30,7 +30,6 @@ const SearchMealPopup = memo(() => {
       return newArray;
     });
   };
-
   return (
     <SearchMealPopupContainer>
       <div className='searchMealPopup_inner'>
@@ -60,16 +59,18 @@ const SearchMealPopup = memo(() => {
         </ul>
         <MyInfoRight
           NUTR_CONT1={selectedSearchData.NUTR_CONT1}
+          SERVING_WT={selectedSearchData.SERVING_WT}
           NUTR_CONT2={selectedSearchData.NUTR_CONT2}
           NUTR_CONT3={selectedSearchData.NUTR_CONT3}
           NUTR_CONT4={selectedSearchData.NUTR_CONT4}
           NUTR_CONT5={selectedSearchData.NUTR_CONT5}
+          NUTR_CONT6={selectedSearchData.NUTR_CONT6}
         />
         <BtnClose func={isSearchedMealPopupToggle} />
         <div className='btnBox'>
           {!editMode ? (
             <>
-              <button onClick={addMealsData}>추가</button>
+              <button onClick={() => insertData(editedNutInfoArray, selectedSearchData)}>추가</button>
               <button onClick={editModeToggle}>수정</button>
             </>
           ) : (

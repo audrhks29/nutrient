@@ -1,28 +1,29 @@
 import React, { memo, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import TodayKcalRecord from './../../components/calendar/TodayKcalRecord';
-
 import { CalendarDateContainer } from '../../styled/CalendarDateStyles';
 
 import MyInfoRight from '../../components/calendar/MyInfoRight';
 import MyInfoLeft from '../../components/calendar/MyInfoLeft';
-import useEditState from '../../state/edit-state';
-
-import menu from '../../assets/menu_calendarMeal.json'
+import TodayKcalRecord from '../../components/calendar/todayKcalRecord/TodayKcalRecord';
 import EditPopup from './../../components/calendar/EditPopup';
 import Background from '../../components/Background';
 
+import useEditState from '../../state/edit-state';
+
 const CalendarDate = memo(() => {
   const { year, month, day } = useParams();
-
-  const { initToday, settingData, popupState } = useEditState(state => state);
+  const { data, initToday, settingData, popupState } = useEditState(state => state);
 
   useEffect(() => {
     const today = `${year}/${month}/${day}`
     initToday(today)
-    settingData()
   }, []);
+
+  useEffect(() => {
+    settingData();
+  }, [data]);
+
 
   return (
     <>
@@ -39,23 +40,7 @@ const CalendarDate = memo(() => {
           <MyInfoLeft />
           <MyInfoRight />
         </div>
-        <ul className='today_kcal_record'>
-          {
-            menu.map(item => {
-              const { id, name, image, unit, text } = item;
-              return (
-                <TodayKcalRecord
-                  key={id}
-                  id={id}
-                  name={name}
-                  image={image}
-                  unit={unit}
-                  text={text}
-                />
-              )
-            })
-          }
-        </ul>
+        <TodayKcalRecord />
       </CalendarDateContainer>
       {popupState && <EditPopup />}
       {popupState && <Background />}

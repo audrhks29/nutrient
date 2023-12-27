@@ -22,7 +22,7 @@
   },
   {
     "id": 4,
-    "name": "etcMeal",
+    "name": "etc",
     "image": "images/icons/dinner.png",
     "unit": "kcal",
     "text": "기타식사"

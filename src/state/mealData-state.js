@@ -53,11 +53,14 @@ const useMealDataState = create((set, getState) => ({
     set({
       selectedSearchData: {
         ...selectedSearchData,
+        DESC_KOR: selectedSearchData.DESC_KOR,
         NUTR_CONT1: editedNutInfoArray[0].amount,
-        NUTR_CONT2: editedNutInfoArray[1].amount,
-        NUTR_CONT3: editedNutInfoArray[2].amount,
-        NUTR_CONT4: editedNutInfoArray[3].amount,
-        NUTR_CONT5: editedNutInfoArray[4].amount,
+        SERVING_WT: editedNutInfoArray[1].amount,
+        NUTR_CONT2: editedNutInfoArray[2].amount,
+        NUTR_CONT3: editedNutInfoArray[3].amount,
+        NUTR_CONT4: editedNutInfoArray[4].amount,
+        NUTR_CONT5: editedNutInfoArray[5].amount,
+        NUTR_CONT6: editedNutInfoArray[6].amount,
       },
       editMode: false
     });
